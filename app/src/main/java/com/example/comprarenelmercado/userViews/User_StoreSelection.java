@@ -44,6 +44,7 @@ public class User_StoreSelection extends AppCompatActivity {
                 startActivity(new Intent(this, User_StoreSelection.class));
                 break;
             case R.id.menitem_view_orders:
+                finish();
                 startActivity(new Intent(this, User_OrderManagement.class));
                 break;
             case R.id.menitem_logout:

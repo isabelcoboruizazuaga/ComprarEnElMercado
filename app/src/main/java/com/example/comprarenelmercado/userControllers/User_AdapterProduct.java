@@ -24,6 +24,7 @@ import com.example.comprarenelmercado.models.User;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class User_AdapterProduct extends RecyclerView.Adapter<User_AdapterProduct.User_AdapterProductViewHolder> {
     private ArrayList<Product> products;
@@ -135,7 +136,7 @@ public class User_AdapterProduct extends RecyclerView.Adapter<User_AdapterProduc
             cart = user.getCart();
             user.addProductToCart(orderLine);
         }catch ( NullPointerException e){
-            cart= new Order();
+            cart= new Order("",new Date());
             cart.addOrderLine(orderLine);
         }
         user.setCart(cart);
