@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/login_fragment">
+
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="com.example.comprarenelmercado.userViews.login_fragment"
+        android:label="fragment_login_fragment"
+        tools:layout="@layout/fragment_login_fragment" >
+        <action
+            android:id="@+id/nav_loginToRegister"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.comprarenelmercado.userViews.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+</navigation>

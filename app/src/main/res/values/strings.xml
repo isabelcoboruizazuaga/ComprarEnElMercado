@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">ComprarEnElMercado</string>
+    <string name="accept">\Aceptar</string>
+    <string name="cancel"> Cancelar</string>
+
+    <!--Layout hints and texts-->
+    <string name="add">Añadir</string>
+    <string name="register_text">Regístrate</string>
+    <string name="login_Text">Acceder</string>
+    <string name="password">Contraseña</string>
+    <string name="txt_mail">Correo electrónico</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="addStore_HintID">Id de la tienda</string>
+    <string name="addStore_hintName">Nombre de la tienda</string>
+    <string name="addProduct_HintId">Id del producto</string>
+    <string name="addProduct_HintName">Nombre del producto</string>
+    <string name="addProduct_HintDescription">Descripción breve</string>
+    <string name="addProduct_HintPrice">Precio del producto</string>
+    <string name="addProduct_HintStock">Stock disponible</string>
+
+    <!--Toast messages-->
+    <string name="succes_register">Registro completo</string>
+    <string name="error_register">El registro falló</string>
+    <string name="succes_email">Email enviado</string>
+    <string name="error_email">Error al enviar</string>
+    <string name="sesion_ok">Sesion iniciada</string>
+    <string name="short_fields">La contraseña o el correo son muy cortos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

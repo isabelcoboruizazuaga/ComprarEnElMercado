@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "455417105001",
+    "firebase_url": "https://asociacionisaycristian-default-rtdb.firebaseio.com",
+    "project_id": "asociacionisaycristian",
+    "storage_bucket": "asociacionisaycristian.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455417105001:android:4bc926b129a026487b70f8",
+        "android_client_info": {
+          "package_name": "com.cromero.asociacionisaycristian"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "455417105001-em6ulidhidk9sql5q25f0t6gvf5p09e5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cromero.asociacionisaycristian",
+            "certificate_hash": "c06362b4a3c5f8a81e7bb75442a96c153e634483"
+          }
+        },
+        {
+          "client_id": "455417105001-hfslu46p0qcjqa3cn0hkigufibo7028r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cromero.asociacionisaycristian",
+            "certificate_hash": "3c4fe7d8005f73ec1e87384077cfa2cea259d731"
+          }
+        },
+        {
+          "client_id": "455417105001-254t32u1mb72nar7m98pi0o6tcqk06dq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4SnUSfdDdAtbcwwBTwNSHMHIX_yKleDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "455417105001-254t32u1mb72nar7m98pi0o6tcqk06dq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455417105001:android:a226bb7e74c9e0cb7b70f8",
+        "android_client_info": {
+          "package_name": "com.example.comprarenelmercado"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "455417105001-254t32u1mb72nar7m98pi0o6tcqk06dq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4SnUSfdDdAtbcwwBTwNSHMHIX_yKleDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "455417105001-254t32u1mb72nar7m98pi0o6tcqk06dq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
