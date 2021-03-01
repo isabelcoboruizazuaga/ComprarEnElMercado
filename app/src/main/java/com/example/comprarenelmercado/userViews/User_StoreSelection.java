@@ -13,11 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.comprarenelmercado.MainActivity;
 import com.example.comprarenelmercado.R;
 import com.example.comprarenelmercado.models.Store;
 import com.example.comprarenelmercado.models.User;
 import com.example.comprarenelmercado.userControllers.User_AdapterStore;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +33,7 @@ public class User_StoreSelection extends AppCompatActivity {
     DatabaseReference dbRefenrece = FirebaseDatabase.getInstance().getReference();
     RecyclerView recView;
     private User user;
+    private FirebaseAuth mAuth;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -51,7 +54,13 @@ public class User_StoreSelection extends AppCompatActivity {
                 startActivity(new Intent(this, User_OrderManagement.class));
                 break;
             case R.id.menitem_logout:
-                Toast.makeText(this,"te la creiste we",Toast.LENGTH_SHORT).show();
+                mAuth.signOut();
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.putExtra("EXIT", true);
+                startActivity(i);
                 break;
         }
         return true;
@@ -61,6 +70,8 @@ public class User_StoreSelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_user__store_selection);
+
+        mAuth= FirebaseAuth.getInstance();
 
         //FloatingActionButton Listener
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_Cart);

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.comprarenelmercado.MainActivity;
 import com.example.comprarenelmercado.R;
 import com.example.comprarenelmercado.models.Order;
 import com.example.comprarenelmercado.models.OrderLine;
@@ -55,7 +56,13 @@ public class User_OrderManagement extends AppCompatActivity {
                 startActivity(new Intent(this, User_OrderManagement.class));
                 break;
             case R.id.menitem_logout:
-                Toast.makeText(this,"te la creiste we",Toast.LENGTH_SHORT).show();
+                mAuth.signOut();
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.putExtra("EXIT", true);
+                startActivity(i);
                 break;
         }
         return true;
