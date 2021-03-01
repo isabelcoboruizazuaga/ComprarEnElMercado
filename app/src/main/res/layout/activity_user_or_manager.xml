@@ -29,16 +29,6 @@
             android:gravity="center"
             android:text="Entrar como usuario" />
 
-        <Button
-            android:id="@+id/btn_manager"
-            android:onClick="managerPart"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="30dp"
-            android:foregroundGravity="center_vertical"
-            android:gravity="center"
-            android:text="Entrar como administrador" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
