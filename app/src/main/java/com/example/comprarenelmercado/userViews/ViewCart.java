@@ -59,8 +59,10 @@ public class ViewCart extends AppCompatActivity {
                     dbReference.setValue(selectedUser);
 
                     Toast.makeText(getApplicationContext(), getText(R.string.ordered).toString(),Toast.LENGTH_SHORT).show();
+                    finish();
                 }else {
                     Toast.makeText(getApplicationContext(), getText(R.string.cartEmpty).toString(), Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
         });
