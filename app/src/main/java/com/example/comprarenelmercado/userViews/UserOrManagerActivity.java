@@ -18,14 +18,14 @@ import com.google.firebase.database.ValueEventListener;
 
 public class UserOrManagerActivity extends AppCompatActivity {
 
-    private User user;
+    private static User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_or_manager);
 
-        getUser();
+        user = getUser();
 
     }
 
@@ -36,16 +36,17 @@ public class UserOrManagerActivity extends AppCompatActivity {
         startActivity(inte);
     }
 
-
-    public void getUser (){
+    static User us;
+    public static User getUser (){
         String h = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    user = snapshot.getValue(User.class);
+                    us = snapshot.getValue(User.class);
 
-                    if (user == null){
+                    if (us == null){
                         System.out.println("nulo");
                     } else{
                         System.out.println("YES");
@@ -59,5 +60,6 @@ public class UserOrManagerActivity extends AppCompatActivity {
 
             }
         });
+        return us;
     }
 }
