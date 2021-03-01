@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.comprarenelmercado.MainActivity;
 import com.example.comprarenelmercado.R;
+import com.example.comprarenelmercado.ViewBalance;
 import com.example.comprarenelmercado.models.Store;
 import com.example.comprarenelmercado.models.User;
 import com.example.comprarenelmercado.userControllers.User_AdapterStore;
@@ -52,6 +53,10 @@ public class User_StoreSelection extends AppCompatActivity {
             case R.id.menitem_view_orders:
                 finish();
                 startActivity(new Intent(this, User_OrderManagement.class));
+                break;
+            case R.id.menitem_view_balance:
+                finish();
+                startActivity(new Intent(this, ViewBalance.class));
                 break;
             case R.id.menitem_logout:
                 mAuth.signOut();
