@@ -136,7 +136,7 @@ public class User_AdapterProduct extends RecyclerView.Adapter<User_AdapterProduc
             cart = user.getCart();
             user.addProductToCart(orderLine);
         }catch ( NullPointerException e){
-            cart= new Order("",new Date());
+            cart= new Order(new Date());
             cart.addLine(orderLine);
         }
         user.setCart(cart);

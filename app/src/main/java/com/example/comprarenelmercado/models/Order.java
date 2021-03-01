@@ -5,35 +5,36 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Order implements Serializable {
-    String orderId;
+    static int nextID=0;
+    int orderId;
     ArrayList<OrderLine> orderLines = new ArrayList<>();
     Date orderDate;
     int status;
     String UserID = "";
 
     public Order() {
+        this.orderId= nextID;
+        nextID++;
     }
 
-    public Order(String orderId, ArrayList<OrderLine> orderLines, Date orderDate) {
-        this.orderId = orderId;
+    public Order(ArrayList<OrderLine> orderLines, Date orderDate) {
+        this.orderId= nextID;
+        nextID++;
         this.orderLines = orderLines;
         this.orderDate = orderDate;
         this.status=0;
     }
 
-    public Order(String orderId, Date orderDate) {
-        this.orderId = orderId;
+    public Order(Date orderDate) {
+        this.orderId= nextID;
+        nextID++;
         this.orderLines = new ArrayList<>();
         this.orderDate = orderDate;
         this.status=0;
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
-    }
-
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
     }
 
     public  ArrayList<OrderLine> getOrderLines() {

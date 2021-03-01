@@ -114,7 +114,7 @@ public class User_OrderManagement extends AppCompatActivity {
                     orders = (ArrayList<Order>) selectedUser.getOrders();
 
                     if(orders.size()<1){
-                        Order  welcOrder = new Order("Bienvenido " + userID,new java.util.Date());
+                        Order  welcOrder = new Order(new java.util.Date());
 
                         OrderLine welcLine = new OrderLine(new Product("wlc_01", "welcome_product", "YES", 0, 1), (float) 1.0,"welcome" );
                         welcOrder.addLine(welcLine);

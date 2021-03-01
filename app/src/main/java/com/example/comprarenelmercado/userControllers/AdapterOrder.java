@@ -55,7 +55,7 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.AdapterOrder
     public void onBindViewHolder(@NonNull AdapterOrderViewHolder holder, int position) {
         Order orderItem = orders.get(position);
 
-        String orderId = orderItem.getOrderId();
+        int orderId = orderItem.getOrderId();
         Date orderDate = orderItem.getOrderDate();
         int orderStatus = orderItem.getStatus();
 
@@ -73,7 +73,7 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.AdapterOrder
         }
 
         //The order data are put into the layout
-        holder.tv_orderId.setText(orderId.toString());
+        holder.tv_orderId.setText(String.valueOf(orderId));
         holder.tv_orderDate.setText(formattedDate);
         holder.tv_orderStatus.setText(statusInString);
 

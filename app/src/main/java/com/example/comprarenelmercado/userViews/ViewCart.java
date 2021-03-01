@@ -52,7 +52,7 @@ public class ViewCart extends AppCompatActivity {
                 if (cart.getOrderLines().size() > 0) {
                     //The cart is added as an order to the user
                     cart.setOrderDate(new Date());
-                    cart.setOrderId(String.valueOf(borrar));
+                    cart.setUserID(currentUid);
                     selectedUser.addOrder(cart);
                     selectedUser.setCart(new Order());
                     //The user is added back to the dataBase
