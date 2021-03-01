@@ -16,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ViewBalance extends AppCompatActivity {
 
-    User user
+    User user;
     TextView tv_balance;
 
     @Override
