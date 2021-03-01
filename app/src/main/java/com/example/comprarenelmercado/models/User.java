@@ -23,6 +23,10 @@ public class User implements Serializable {
         cart=new Order();
     }
 
+    public void addOrder(Order order){
+            orders.add(order);
+    }
+
     public String getUserName() {
         return userName;
     }
@@ -62,7 +66,7 @@ public class User implements Serializable {
     }
 
     public void addProductToCart(OrderLine orderLine) {
-        cart.addOrderLine(orderLine);
+        cart.addLine(orderLine);
     }
 
     public boolean isManager(){return isManager;}

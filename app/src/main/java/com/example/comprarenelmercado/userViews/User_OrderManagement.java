@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.comprarenelmercado.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class User_OrderManagement extends AppCompatActivity {
@@ -41,5 +43,14 @@ public class User_OrderManagement extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user__order_management);
+
+        //FloatingActionButton Listener
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_Cart);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ViewCart.class));
+            }
+        });
     }
 }

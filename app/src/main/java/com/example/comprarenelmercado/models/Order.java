@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Order implements Serializable {
     String orderId;
-    ArrayList<OrderLine> orderLines;
+    ArrayList<OrderLine> orderLines = new ArrayList<>();
     Date orderDate;
     int status;
     String UserID = "";
@@ -28,10 +28,6 @@ public class Order implements Serializable {
         this.status=0;
     }
 
-    public void  addOrderLine(OrderLine orderLine){
-        orderLines.add(orderLine);
-    }
-
     public String getOrderId() {
         return orderId;
     }
@@ -40,11 +36,11 @@ public class Order implements Serializable {
         this.orderId = orderId;
     }
 
-    public ArrayList<OrderLine> getOrderLines() {
+    public  ArrayList<OrderLine> getOrderLines() {
         return orderLines;
     }
 
-    public void setOrderLines(ArrayList<OrderLine> orderLines) {
+    public void setOrderLines( ArrayList<OrderLine> orderLines) {
         this.orderLines = orderLines;
     }
 
@@ -70,5 +66,9 @@ public class Order implements Serializable {
 
     public void setUserID(String userID) {
         UserID = userID;
+    }
+
+    public void addLine(OrderLine line) {
+        orderLines.add(line);
     }
 }

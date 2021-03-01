@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import com.example.comprarenelmercado.R;
 import com.example.comprarenelmercado.models.Store;
 import com.example.comprarenelmercado.models.User;
 import com.example.comprarenelmercado.userControllers.User_AdapterStore;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +37,7 @@ public class User_StoreSelection extends AppCompatActivity {
     {// Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.user_menu, menu);
         return true;
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -59,6 +62,14 @@ public class User_StoreSelection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_user__store_selection);
 
+        //FloatingActionButton Listener
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_Cart);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ViewCart.class));
+            }
+        });
 
         user = (User) getIntent().getSerializableExtra("user");
 
