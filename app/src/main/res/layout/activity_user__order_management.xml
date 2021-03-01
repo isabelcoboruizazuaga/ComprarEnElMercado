@@ -9,7 +9,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rv_userStore"
+        android:id="@+id/rv_myUserOrders"
         android:scrollbars="vertical"
         tools:context=".userViews.User_OrderManagement">
     </androidx.recyclerview.widget.RecyclerView>

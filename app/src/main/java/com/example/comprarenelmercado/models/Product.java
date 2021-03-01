@@ -10,7 +10,7 @@ Product implements Serializable {
     public Product() {
     }
 
-    public Product(String idProduct,String productName, String description, float price, Float stock) {
+    public Product(String idProduct,String productName, String description, float price, float stock) {
         this.idProduct = idProduct;
         this.productName=productName;
         this.description = description;

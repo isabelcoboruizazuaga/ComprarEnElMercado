@@ -25,6 +25,16 @@
     <string name="error_email">Error al enviar</string>
     <string name="sesion_ok">Sesion iniciada</string>
     <string name="short_fields">La contraseña o el correo son muy cortos</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ordered">Pedido, para recoger su compra vaya al punto de recogida</string>
+    <string name="cartEmpty">¡No hay nada que comprar!</string>
+
+    <!--Adapter User and Order texts-->
+    <string name="setBalance">Conceder saldo</string>
+    <string name="viewOrders">Ver pedidos</string>
+    <string name="outstanding">Pendiente</string>
+    <string name="collected">Recogido</string>
+
+
+
+
 </resources>

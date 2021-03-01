@@ -137,7 +137,7 @@ public class User_AdapterProduct extends RecyclerView.Adapter<User_AdapterProduc
             user.addProductToCart(orderLine);
         }catch ( NullPointerException e){
             cart= new Order("",new Date());
-            cart.addOrderLine(orderLine);
+            cart.addLine(orderLine);
         }
         user.setCart(cart);
         FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).setValue(user);

@@ -9,13 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ComprarEnElMercado">
-
-
-        <activity android:name=".userViews.User_ProductSelection"></activity>
+        <activity android:name=".userViews.ViewCart"></activity>
+        <activity android:name=".userViews.User_ProductSelection" />
         <activity android:name=".userViews.User_OrderManagement" />
         <activity android:name=".userViews.User_StoreSelection" />
         <activity android:name=".userViews.UserOrManagerActivity" />
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
