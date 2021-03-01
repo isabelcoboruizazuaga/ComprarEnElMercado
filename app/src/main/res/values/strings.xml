@@ -18,6 +18,19 @@
     <string name="addProduct_HintPrice">Precio del producto</string>
     <string name="addProduct_HintStock">Stock disponible</string>
 
+
+    <!--Adapter Store and Product texts-->
+    <string name="manage">Administrar</string>
+    <string name="delete">Borrar</string>
+    <string name="are_you_sure">¿Seguro que quieres borrar \ </string>
+    <string name="cant_undo">\? Esta opción no se puede deshacer</string>
+    <string name="is_deleted"> eliminado</string>
+    <string name="edit"> Editar</string>
+    <string name="cancelled"> Cancelado</string>
+    <string name="empty_fields">Por favor rellene todos los campos</string>
+    <string name="product_added">Producto añadido</string>
+    <string name="product_edited">Producto editado</string>
+
     <!--Toast messages-->
     <string name="succes_register">Registro completo</string>
     <string name="error_register">El registro falló</string>

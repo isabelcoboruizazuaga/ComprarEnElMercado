@@ -4,20 +4,27 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.comprarenelmercado.R;
 import com.example.comprarenelmercado.models.Order;
+import com.example.comprarenelmercado.models.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -25,18 +32,15 @@ import java.util.Locale;
 public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.AdapterOrderViewHolder> {
     private List<Order> orders;
     private Context context;
+    private User user;
     //Database variables
     private FirebaseDatabase database;
     private DatabaseReference dbReference;
+    private ValueEventListener eventListener;
 
     //AdapterOrder's constructor
     public AdapterOrder(List<Order> orders) {
         this.orders = orders;
-
-        //Database initialization
-        database = FirebaseDatabase.getInstance();
-        dbReference = database.getReference().child("User");
-
     }
 
     @NonNull
@@ -84,9 +88,11 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.AdapterOrder
                 //Database initialization
                 database = FirebaseDatabase.getInstance();
                 dbReference = database.getReference().child("User").child(orderItem.getUserID());
+                setEventListener();
+                dbReference.addValueEventListener(eventListener);
 
                 //When an item is pressed an option menu will be showed
-                //showDialog(v,orderItem);
+                showDialog(v,orderItem);
             }
         });
 
@@ -117,10 +123,10 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.AdapterOrder
     }
 
     //OptionDialog creation method
-    /*private void showDialog(View view,Order order) {
+    private void showDialog(View view,Order order) {
         //Initialization
         AlertDialog.Builder optionDialog = new AlertDialog.Builder(context);
-        optionDialog.setTitle(order.getOrderId());
+        optionDialog.setTitle(String.valueOf(order.getOrderId()));
 
         //Options creation
         CharSequence opciones[] = {context.getString(R.string.manage),context.getString(R.string.delete)};
@@ -129,12 +135,13 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.AdapterOrder
             public void onClick(DialogInterface dialog, int item) {
                 switch (item) {
                     case 0:
-                        Intent intent = new Intent(context, OrderLineActivity.class);
+                        //todo ver líneas pedido
+                        /*Intent intent = new Intent(context, OrderLineActivity.class);
                         intent.putExtra("order",order);
                         context.startActivity(intent);
-                        break;
+                        break;*/
                     case 1:
-                        //todo borrar pedido
+                        deleteConfirmation(view,order);
                         break;
                 }
             }
@@ -142,5 +149,61 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.AdapterOrder
         //Dialog creation
         AlertDialog alertDialog = optionDialog.create();
         alertDialog.show();
-    }*/
+    }
+
+    private void deleteConfirmation(View view, Order order){
+        //Initialization
+        AlertDialog.Builder alertDialogBu = new AlertDialog.Builder(context);
+        alertDialogBu.setTitle(view.getResources().getText(R.string.delete));
+        alertDialogBu.setMessage(view.getResources().getText(R.string.are_you_sure) + String.valueOf(order.getOrderId()) + view.getResources().getText(R.string.cant_undo));
+
+        //Positive option
+        alertDialogBu.setPositiveButton( view.getResources().getText(R.string.accept), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                delete(order);
+                Toast.makeText(context, String.valueOf(order.getOrderId()) + view.getResources().getText(R.string.is_deleted), Toast.LENGTH_SHORT).show();
+            }
+        });
+        //Negative option
+        alertDialogBu.setNegativeButton(view.getResources().getText(R.string.cancel), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(context, view.getResources().getText(R.string.cancelled), Toast.LENGTH_SHORT).show();
+            }
+        });
+        //Dialog creation
+        AlertDialog alertDialog = alertDialogBu.create();
+        alertDialog.show();
+    }
+
+    private void delete(Order order){
+        Order myOrder;
+        List<Order> ordersDeleted= new ArrayList<>();
+        for(int i= user.getOrders().size(); i>0;  i--){
+            myOrder=user.getOrders().get(i-1);
+            if(myOrder.getOrderId()!=order.getOrderId()){
+                ordersDeleted.add(myOrder);
+            }
+        }
+        user.setOrders(ordersDeleted);
+        dbReference.setValue(user);
+    }
+
+    //Database listener
+    public void setEventListener(){
+        eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    //The current user is extracted
+                    user = dataSnapshot.getValue(User.class);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("onDataChange", "Error!", databaseError.toException());
+            }
+        };
+    }
 }
