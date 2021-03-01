@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,12 @@ import com.example.comprarenelmercado.models.OrderLine;
 import com.example.comprarenelmercado.models.Product;
 import com.example.comprarenelmercado.models.Store;
 import com.example.comprarenelmercado.models.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,13 +38,24 @@ public class User_AdapterProduct extends RecyclerView.Adapter<User_AdapterProduc
     private Store store;
     private  String idStore;
     private Context context;
+    private FirebaseAuth mAuth;
+    private String userID;
+    private DatabaseReference dbReference;
+    private ValueEventListener eventListener;
 
     //AdapterStore's constructor
-    public User_AdapterProduct(ArrayList<Product> products, Store store, User user) {
+    public User_AdapterProduct(ArrayList<Product> products, Store store) {
         this.products = products;
         this.store =store;
         this.idStore=store.getIdStore();
-        this.user=user;
+        //UserID extracted
+        mAuth= FirebaseAuth.getInstance();
+        userID= mAuth.getCurrentUser().getUid();
+
+        //The database is initialized and the eventListener is assigned
+        dbReference = FirebaseDatabase.getInstance().getReference().child("User").child(userID);
+        setEventListener();
+        dbReference.addValueEventListener(eventListener);
     }
 
     @NonNull
@@ -164,12 +181,10 @@ public class User_AdapterProduct extends RecyclerView.Adapter<User_AdapterProduc
                     public void onClick(DialogInterface dialog, int which) {
                         addProductToCart(Float.parseFloat(input.getText().toString()),productItem);
                         Toast.makeText(context,"Añadido(s) " + input.getText().toString() +" " + productItem.getProductName(),Toast.LENGTH_SHORT).show();
-                       /* float balance = Float.parseFloat(input.getText().toString());
-                        float oldBalance= user.getBalance();
-                        user.setBalance(oldBalance+balance);
-                        dbReference.setValue(user);*/
+
                     }
                 });
+
         //Cancel
         alertDialog.setNegativeButton(view.getResources().getText(R.string.cancel),
                 new DialogInterface.OnClickListener() {
@@ -178,6 +193,25 @@ public class User_AdapterProduct extends RecyclerView.Adapter<User_AdapterProduc
                     }
                 });
         alertDialog.show();
+    }
+
+    //Database listener
+    public void setEventListener(){
+        eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    //The current user is extracted
+                    user = dataSnapshot.getValue(User.class);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("onDataChange", "Error!", databaseError.toException());
+            }
+        };
     }
 
 

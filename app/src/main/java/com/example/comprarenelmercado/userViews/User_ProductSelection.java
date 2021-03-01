@@ -45,18 +45,6 @@ public class User_ProductSelection extends AppCompatActivity {
         idStore= intent.getStringExtra("idStore");
         user = (User) intent.getSerializableExtra("user");
 
-        /*
-        //FloatingActionButton Listener
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_addProduct);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent= new Intent(getBaseContext(), AddProductActivity.class);
-                intent.putExtra("store",selectedStore);
-                startActivity(intent);
-            }
-        });*/
-
 
         //RecyclerView and list initialization
         recView = (RecyclerView) findViewById(R.id.rv_userProduct);
@@ -87,7 +75,7 @@ public class User_ProductSelection extends AppCompatActivity {
                     products= (ArrayList<Product>) selectedStore.getProducts();
 
                     //Assignment of the Recycler View adapter with the product list
-                    User_AdapterProduct adapter = new User_AdapterProduct(products,selectedStore,user);
+                    User_AdapterProduct adapter = new User_AdapterProduct(products,selectedStore);
                     recView.setAdapter(adapter);
                 }
             }
