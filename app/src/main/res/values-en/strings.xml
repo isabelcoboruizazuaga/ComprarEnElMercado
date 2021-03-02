@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accept">\Aceptar</string>
+    <string name="cancel"> Cancelar</string>
+
+    <!--Layout hints and texts-->
+    <string name="add">Add</string>
+    <string name="register_text">Register</string>
+    <string name="login_Text">Log in</string>
+    <string name="password">Password</string>
+    <string name="txt_mail">Email</string>
+    <string name="username">Username</string>
+    <string name="addStore_HintID">Store ID</string>
+    <string name="addStore_hintName">Store Name</string>
+    <string name="addProduct_HintId">Product Id</string>
+    <string name="addProduct_HintName">Product name</string>
+    <string name="addProduct_HintDescription">Small description</string>
+    <string name="addProduct_HintPrice">Product price</string>
+    <string name="addProduct_HintStock">Available stock</string>
+
+
+    <!--Adapter Store and Product texts-->
+    <string name="manage">Manage</string>
+    <string name="delete">Delete</string>
+    <string name="are_you_sure">Are you sure you want to delete \ </string>
+    <string name="cant_undo">\? This option can\'t be undone</string>
+    <string name="is_deleted">\ deleted</string>
+    <string name="edit"> Edit</string>
+    <string name="cancelled"> Cancelled</string>
+    <string name="empty_fields">Please fill all the fields</string>
+    <string name="product_added">Product added</string>
+    <string name="product_edited">Edited</string>
+
+    <!--Toast messages-->
+    <string name="succes_register">Successful sign uo</string>
+    <string name="error_register">The register failed</string>
+    <string name="succes_email">Email sent</string>
+    <string name="error_email">Sending error</string>
+    <string name="sesion_ok">Login correct</string>
+    <string name="short_fields">Password or email too short</string>
+    <string name="ordered">Ordered, go to the pick up point to ger your orders</string>
+    <string name="cartEmpty">¡There\'s nothing to buy!</string>
+    <string name="edited">Edited</string>
+
+    <!--Adapter User and Order texts-->
+    <string name="setBalance">Grant balance</string>
+    <string name="viewOrders">View orders</string>
+    <string name="outstanding">Outstanding</string>
+    <string name="collected">Collected</string>
+    <string name="amount">Amount</string>
+    <string name="added">Added </string>
+    <string name="add_to_order">Add to order</string>
+
+    <!--Menu-->
+    <string name="log_out">Log out</string>
+    <string name="balance">Balance</string>
+    <string name="buy">Buy</string>
+</resources>
