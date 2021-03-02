@@ -40,12 +40,21 @@
     <string name="short_fields">La contraseña o el correo son muy cortos</string>
     <string name="ordered">Pedido, para recoger su compra vaya al punto de recogida</string>
     <string name="cartEmpty">¡No hay nada que comprar!</string>
+    <string name="edited">Editado</string>
 
     <!--Adapter User and Order texts-->
     <string name="setBalance">Conceder saldo</string>
     <string name="viewOrders">Ver pedidos</string>
     <string name="outstanding">Pendiente</string>
     <string name="collected">Recogido</string>
+    <string name="amount">Cantidad</string>
+    <string name="added">Añadido/s </string>
+    <string name="add_to_order">Añadir al pedido</string>
+
+    <!--Menu-->
+    <string name="log_out">Cerrar sesión</string>
+    <string name="balance">Saldo</string>
+    <string name="buy">Comprar</string>
 
 
 </resources>

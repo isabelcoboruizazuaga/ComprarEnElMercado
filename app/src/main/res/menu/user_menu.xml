@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/menitem_store_selection"
-        android:title="Buy"
+        android:title="@string/buy"
         android:orderInCategory="0"
         app:showAsAction="never"/>
 
     <item android:id="@+id/menitem_view_orders"
-        android:title="View Orders"
+        android:title="@string/viewOrders"
         android:orderInCategory="1"/>
 
 
     <item android:id="@+id/menitem_view_balance"
-        android:title="View Balance"
+        android:title="@string/balance"
         android:orderInCategory="1"/>
 
     <item android:id="@+id/menitem_logout"
         android:orderInCategory="100"
-        android:title="Log out"/>
+        android:title="@string/log_out"/>
 </menu>

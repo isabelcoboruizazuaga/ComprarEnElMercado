@@ -130,7 +130,7 @@ public class User_AdapterProduct extends RecyclerView.Adapter<User_AdapterProduc
 
         //Options creation
         //"view.getResources().getText(R.string.edit)"
-        CharSequence opciones[] = {"Añadir al pedido"};
+        CharSequence opciones[] = {view.getResources().getText(R.string.add_to_order)};
         //OnClickMethod for each option
         optionDialog.setItems(opciones, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
@@ -164,7 +164,7 @@ public class User_AdapterProduct extends RecyclerView.Adapter<User_AdapterProduc
         //Initialization
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
         alertDialog.setTitle(productItem.getProductName());
-        alertDialog.setMessage("Cantidad");
+        alertDialog.setMessage(view.getResources().getText(R.string.amount));
 
         //Layout
         final EditText input = new EditText(context);
@@ -179,9 +179,10 @@ public class User_AdapterProduct extends RecyclerView.Adapter<User_AdapterProduc
         alertDialog.setPositiveButton(view.getResources().getText(R.string.accept),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        addProductToCart(Float.parseFloat(input.getText().toString()),productItem);
-                        Toast.makeText(context,"Añadido(s) " + input.getText().toString() +" " + productItem.getProductName(),Toast.LENGTH_SHORT).show();
-
+                        try{
+                            addProductToCart(Float.parseFloat(input.getText().toString()),productItem);
+                            Toast.makeText(context,view.getResources().getText(R.string.added) + input.getText().toString() +" " + productItem.getProductName(),Toast.LENGTH_SHORT).show();
+                        }catch (Exception e){};
                     }
                 });
 
