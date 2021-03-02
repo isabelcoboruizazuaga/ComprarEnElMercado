@@ -26,7 +26,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AdapterChartLines extends RecyclerView.Adapter<AdapterChartLines.AdapterOrderLineViewHolder> {
     private ArrayList<OrderLine> lines;
@@ -35,10 +34,9 @@ public class AdapterChartLines extends RecyclerView.Adapter<AdapterChartLines.Ad
     //Database variables
     private FirebaseDatabase database;
     private DatabaseReference dbReference;
-    private ValueEventListener eventListener;
 
     //AdapterOrder's constructor
-    public AdapterChartLines(Order order, ArrayList<OrderLine> lines) {
+    public AdapterChartLines(Order order) {
         this.lines = order.getOrderLines();
         this.order = order;
         //Database initialization
@@ -54,8 +52,7 @@ public class AdapterChartLines extends RecyclerView.Adapter<AdapterChartLines.Ad
                 .inflate(R.layout.orderline_item, parent, false);
 
         //The view holder is created
-        AdapterOrderLineViewHolder avh=new AdapterOrderLineViewHolder((itemView));
-        return avh;
+        return new AdapterOrderLineViewHolder((itemView));
     }
 
     @Override

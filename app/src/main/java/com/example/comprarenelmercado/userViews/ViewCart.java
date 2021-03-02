@@ -1,21 +1,18 @@
 package com.example.comprarenelmercado.userViews;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.comprarenelmercado.R;
 import com.example.comprarenelmercado.models.Order;
-import com.example.comprarenelmercado.models.OrderLine;
 import com.example.comprarenelmercado.models.User;
 import com.example.comprarenelmercado.userControllers.AdapterChartLines;
-import com.example.comprarenelmercado.userControllers.AdapterOrderLine;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -24,7 +21,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class ViewCart extends AppCompatActivity {
@@ -35,7 +31,6 @@ public class ViewCart extends AppCompatActivity {
     private DatabaseReference dbReference;
     private  String currentUid;
     private User selectedUser;
-    private ArrayList<OrderLine> lines;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +52,10 @@ public class ViewCart extends AppCompatActivity {
                     dbReference.setValue(selectedUser);
 
                     Toast.makeText(getApplicationContext(), getText(R.string.ordered).toString(),Toast.LENGTH_SHORT).show();
-                    finish();
                 }else {
                     Toast.makeText(getApplicationContext(), getText(R.string.cartEmpty).toString(), Toast.LENGTH_SHORT).show();
-                    finish();
                 }
+                finish();
             }
         });
 
@@ -90,10 +84,9 @@ public class ViewCart extends AppCompatActivity {
                     selectedUser = dataSnapshot.getValue(User.class);
                     //Cart extracted
                     cart=selectedUser.getCart();
-                    lines=cart.getOrderLines();
 
                     //Assignment of the Recycler View adapter with the product list
-                    AdapterChartLines adapter = new AdapterChartLines(cart, lines);
+                    AdapterChartLines adapter = new AdapterChartLines(cart);
                     recView.setAdapter(adapter);
                 }
             }
