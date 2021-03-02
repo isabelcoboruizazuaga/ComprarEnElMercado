@@ -27,13 +27,13 @@ public class UserOrManagerActivity extends AppCompatActivity {
 
         getUser();
 
+        Intent inte = new Intent(this, User_StoreSelection.class);
+        inte.putExtra("user",user);
+        startActivity(inte);
     }
 
     public void userPart(View view) {
-        Intent inte = new Intent(this, User_StoreSelection.class);
-        System.out.println(user.getEmail());
-        inte.putExtra("user",user);
-        startActivity(inte);
+
     }
 
 
