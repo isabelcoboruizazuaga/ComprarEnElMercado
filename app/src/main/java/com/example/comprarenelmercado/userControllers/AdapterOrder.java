@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.comprarenelmercado.R;
 import com.example.comprarenelmercado.models.Order;
 import com.example.comprarenelmercado.models.User;
+import com.example.comprarenelmercado.userViews.User_OrderLineActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -135,11 +136,10 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.AdapterOrder
             public void onClick(DialogInterface dialog, int item) {
                 switch (item) {
                     case 0:
-                        //todo ver líneas pedido
-                        /*Intent intent = new Intent(context, OrderLineActivity.class);
+                        Intent intent = new Intent(context, User_OrderLineActivity.class);
                         intent.putExtra("order",order);
                         context.startActivity(intent);
-                        break;*/
+                        break;
                     case 1:
                         deleteConfirmation(view,order);
                         break;

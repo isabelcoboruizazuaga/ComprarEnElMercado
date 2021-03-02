@@ -39,7 +39,7 @@ public class AdapterOrderLine extends RecyclerView.Adapter<AdapterOrderLine.Adap
     private ValueEventListener eventListener;
 
     //AdapterOrder's constructor
-    public AdapterOrderLine(Order order) {
+    public AdapterOrderLine(Order order, ArrayList<OrderLine> lines) {
         this.lines = order.getOrderLines();
         this.order = order;
         //Database initialization

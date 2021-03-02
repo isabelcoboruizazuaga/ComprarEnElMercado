@@ -27,8 +27,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class ViewCart extends AppCompatActivity {
-    int borrar=0;
-
     private RecyclerView recView;
     private ValueEventListener eventListener;
     Order cart;
@@ -48,7 +46,6 @@ public class ViewCart extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                borrar++;
                 if (cart.getOrderLines().size() > 0) {
                     //The cart is added as an order to the user
                     cart.setOrderDate(new Date());
@@ -86,14 +83,16 @@ public class ViewCart extends AppCompatActivity {
         eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                 if(dataSnapshot.exists()){
                     //The current user is extracted
                     selectedUser = dataSnapshot.getValue(User.class);
                     //Cart extracted
                     cart=selectedUser.getCart();
+                    lines=cart.getOrderLines();
 
                     //Assignment of the Recycler View adapter with the product list
-                    AdapterOrderLine adapter = new AdapterOrderLine(cart);
+                    AdapterOrderLine adapter = new AdapterOrderLine(cart, lines);
                     recView.setAdapter(adapter);
                 }
             }

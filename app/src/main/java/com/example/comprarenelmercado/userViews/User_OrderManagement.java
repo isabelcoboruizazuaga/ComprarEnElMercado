@@ -96,6 +96,8 @@ public class User_OrderManagement extends AppCompatActivity {
         mAuth= FirebaseAuth.getInstance();
         userID= mAuth.getCurrentUser().getUid();
 
+        orders= new ArrayList<Order>();
+
         //The database is initialized and the eventListener is assigned
         dbReference = FirebaseDatabase.getInstance().getReference().child("User").child(userID);
         setEventListener();
@@ -108,6 +110,7 @@ public class User_OrderManagement extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
+                    orders.clear();
                     //The current user is extracted
                     selectedUser = dataSnapshot.getValue(User.class);
                     //Orders list is refilled
@@ -124,7 +127,7 @@ public class User_OrderManagement extends AppCompatActivity {
                         orders.add(welcOrder);
                     }
                     //Assignment of the Recycler View adapter with the product list
-                    AdapterOrder adapter = new AdapterOrder(selectedUser.getOrders());
+                    AdapterOrder adapter = new AdapterOrder(orders);
                     recView.setAdapter(adapter);
 
                 }
