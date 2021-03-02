@@ -14,6 +14,7 @@ import com.example.comprarenelmercado.R;
 import com.example.comprarenelmercado.models.Order;
 import com.example.comprarenelmercado.models.OrderLine;
 import com.example.comprarenelmercado.models.User;
+import com.example.comprarenelmercado.userControllers.AdapterChartLines;
 import com.example.comprarenelmercado.userControllers.AdapterOrderLine;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -92,7 +93,7 @@ public class ViewCart extends AppCompatActivity {
                     lines=cart.getOrderLines();
 
                     //Assignment of the Recycler View adapter with the product list
-                    AdapterOrderLine adapter = new AdapterOrderLine(cart, lines);
+                    AdapterChartLines adapter = new AdapterChartLines(cart, lines);
                     recView.setAdapter(adapter);
                 }
             }
