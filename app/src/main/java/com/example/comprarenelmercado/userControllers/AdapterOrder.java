@@ -71,9 +71,13 @@ public class AdapterOrder extends RecyclerView.Adapter<AdapterOrder.AdapterOrder
         switch (orderStatus){
             case 0:
                 statusInString= holder.itemView.getContext().getResources().getText(R.string.outstanding).toString();
+                holder.tv_orderStatus.setTextColor(holder.itemView.getContext().getResources().getColor((R.color.outstanding)));
+
                 break;
             case 1:
                 statusInString=holder.itemView.getContext().getResources().getText(R.string.collected).toString();
+                holder.tv_orderStatus.setTextColor(holder.itemView.getContext().getResources().getColor((R.color.paid)));
+
                 break;
         }
 

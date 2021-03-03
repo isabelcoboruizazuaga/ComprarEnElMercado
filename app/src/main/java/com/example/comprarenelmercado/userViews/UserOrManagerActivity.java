@@ -33,7 +33,9 @@ public class UserOrManagerActivity extends AppCompatActivity {
     }
 
     public void userPart(View view) {
-
+        Intent inte = new Intent(this, User_StoreSelection.class);
+        inte.putExtra("user",user);
+        startActivity(inte);
     }
 
 
